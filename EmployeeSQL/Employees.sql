@@ -85,7 +85,24 @@ SELECT employees.emp_no, employees.last_name, employees.first_name, dept_emp.dep
 FROM employees
 JOIN dept_emp ON employees.emp_no=dept_emp.emp_no;
 
-SELECT employees.
+SELECT employees.first_name, employees.last_name, employees.sex
+FROM employees
+WHERE employees.first_name = 'Hercules';
 
+SELECT dept_emp.emp_no, employees.last_name, employees.first_name, departments.dept_name
+FROM departments
+JOIN dept_emp ON dept_emp.dept_no=departments.dept_no
+JOIN employees ON dept_emp.emp_no=employees.emp_no
+WHERE departments.dept_name = 'Sales';
 
+SELECT dept_emp.emp_no, employees.last_name, employees.first_name, departments.dept_name
+FROM departments
+JOIN dept_emp ON dept_emp.dept_no=departments.dept_no
+JOIN employees ON dept_emp.emp_no=employees.emp_no
+WHERE departments.dept_name = 'Sales'
+OR departments.dept_name = 'Development';
+
+SELECT last_name, count(last_name)  AS "Last name count" FROM employees
+GROUP BY last_name
+ORDER BY "Last name count" DESC;
 
